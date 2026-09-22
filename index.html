@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  
+  <meta property="og:title" content="Madiha & Azan | Royal Wedding Invitation">
+  <meta property="og:description" content="We request the honour of your presence at our wedding ceremony on 12th Nov 2026.">
+  <meta name="theme-color" content="#EBE3D5">
+
+  <title>Madiha & Azan | Premium Wedding Invitation</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Premium Video Theme Colors */
+      --bg-cream: #F7F4EB;
+      --bg-sage: #8A9A86;
+      --gold-light: #F4E5C2;
+      --gold-base: #C5A059;
+      --gold-dark: #8C6D31;
+      --text-dark: #2F3E36;
+      --text-muted: #5B5B5B;
+      --curtain-light: #EBE3D5;
+      --curtain-dark: #C2B4A1;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    
+    body {
+      background-color: var(--bg-cream);
+      font-family: 'Cormorant Garamond', serif;
+      overflow: hidden; /* Lock scroll initially */
+      color: var(--text-dark);
+      background-image: radial-gradient(circle at center, #ffffff 0%, var(--bg-cream) 100%);
+    }
+
+    /* Floating Gold Dust */
+    #sparkles-canvas {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 10; opacity: 0.5;
+    }
+
+    /* Floating Sound Control */
+    #sound-control {
+      position: fixed; bottom: 20px; right: 20px; z-index: 10000;
+      background: rgba(197, 160, 89, 0.2); border: 1px solid var(--gold-base);
+      color: var(--gold-dark); width: 45px; height: 45px; border-radius: 50%;
+      display: none; justify-content: center; align-items: center;
+      cursor: pointer; font-size: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      backdrop-filter: blur(5px); transition: all 0.3s;
+    }
+
+    /* ================= 3D REALISTIC SILK CURTAINS ================= */
+    #gate-container {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9000;
+      display: flex; pointer-events: none; overflow: hidden;
+      perspective: 1000px;
+    }
+    
+    .door {
+      width: 50%; height: 100%; position: relative; pointer-events: auto;
+      
+      /* Extremely Realistic 3D Folds using linear gradients */
+      background: linear-gradient(to right, 
+        rgba(235, 227, 213, 1) 0%, 
+        rgba(194, 180, 161, 1) 15%, 
+        rgba(247, 244, 235, 1) 25%, 
+        rgba(194, 180, 161, 1) 40%, 
+        rgba(235, 227, 213, 1) 50%, 
+        rgba(170, 150, 130, 1) 65%, 
+        rgba(247, 244, 235, 1) 80%, 
+        rgba(194, 180, 161, 1) 100%
+      );
+      background-size: 200% 100%;
+      
+      /* Cinematic slow ease transition */
+      transition: transform 2.8s cubic-bezier(0.45, 0, 0.15, 1), 
+                  filter 2.8s ease, 
+                  box-shadow 2.8s ease;
+      box-shadow: inset 0 0 50px rgba(0,0,0,0.3);
+      z-index: 2;
+    }
+
+    /* Beautiful Gold Lace Border on Curtain Edges */
+    #left-door { transform-origin: left top; border-right: 6px solid var(--gold-base); }
+    #right-door { transform-origin: right top; border-left: 6px solid var(--gold-base); }
+    
+    #left-door::after, #right-door::after {
+      content: ''; position: absolute; top: 0; height: 100%; width: 15px;
+      background: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(140,109,49,0.3) 5px, rgba(140,109,49,0.3) 10px);
+    }
+    #left-door::after { right: -6px; }
+    #right-door::after { left: -6px; }
+
+    /* The Realistic Opening Effect (Squish & 3D Rotate slightly) */
+    .door.open-left { 
+      transform: scaleX(0.1) rotateY(15deg); 
+      filter: brightness(0.7) drop-shadow(20px 0 30px rgba(0,0,0,0.6)); 
+    }
+    .door.open-right { 
+      transform: scaleX(0.1) rotateY(-15deg); 
+      filter: brightness(0.7) drop-shadow(-20px 0 30px rgba(0,0,0,0.6)); 
+    }
+
+    /* ================= PREMIUM 3D EMBOSSED GOLD SEAL ================= */
+    #seal-btn {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      z-index: 9500; cursor: pointer; pointer-events: auto;
+      transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .seal-circle {
+      width: 140px; height: 140px; border-radius: 50%;
+      background: radial-gradient(circle, #E5CD8C 0%, #C5A059 50%, #8C6D31 100%);
+      display: flex; justify-content: center; align-items: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4), 
+                  inset 0 4px 8px rgba(255,255,255,0.6), 
+                  inset 0 -6px 12px rgba(0,0,0,0.3);
+      border: 3px solid #FFF5D1;
+      animation: gentlePulse 2.5s infinite alternate;
+      position: relative;
+    }
+    
+    .seal-circle::before {
+      content: ''; position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px;
+      border-radius: 50%; border: 2px dashed rgba(255, 255, 255, 0.5);
+    }
+    
+    .seal-monogram {
+      font-family: 'Great Vibes', cursive; font-size: 55px;
+      color: #FFF5D1; 
+      text-shadow: 1px 2px 4px rgba(0,0,0,0.4), -1px -1px 0px rgba(255,255,255,0.4);
+    }
+
+    .seal-text {
+      position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%);
+      width: 250px; text-align: center; white-space: nowrap;
+      font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600;
+      color: var(--text-dark); letter-spacing: 4px; text-transform: uppercase;
+      background: rgba(255,255,255,0.7); padding: 5px 15px; border-radius: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    @keyframes gentlePulse {
+      0% { transform: scale(1); filter: brightness(1); }
+      100% { transform: scale(1.05); filter: brightness(1.1); }
+    }
+
+    /* ================= MAIN CONTENT (PREMIUM SCROLLABLE LAYOUT) ================= */
+    .main-scroll-container {
+      display: none;
+      width: 100%; height: 100vh; overflow-y: auto; overflow-x: hidden;
+      perspective: 1000px;
+    }
+
+    .content-wrapper {
+      width: 100%; max-width: 500px; margin: 0 auto;
+      padding: 40px 20px;
+      opacity: 0; transform: scale(0.9) translateY(50px);
+      transition: all 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    
+    .content-wrapper.revealed {
+      opacity: 1; transform: scale(1) translateY(0);
+    }
+
+    .islamic-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      padding: 50px 30px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+      position: relative;
+      border: 1px solid rgba(197, 160, 89, 0.3);
+    }
+
+    /* Elegant Floral/Arch Border (Simulated with CSS) */
+    .islamic-card::before {
+      content: ''; position: absolute; top: 15px; left: 15px; right: 15px; bottom: 15px;
+      border: 1px solid var(--gold-base); border-radius: 8px;
+      pointer-events: none;
+    }
+    .islamic-card::after {
+      content: ''; position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px;
+      border: 1px dashed var(--gold-dark); border-radius: 4px;
+      opacity: 0.5; pointer-events: none;
+    }
+
+    /* TYPOGRAPHY */
+    .guest-tag {
+      font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 600;
+      color: var(--gold-dark); letter-spacing: 2px; text-transform: uppercase;
+      background: rgba(197, 160, 89, 0.1); padding: 6px 15px; border-radius: 20px;
+      display: inline-block; margin-bottom: 25px;
+    }
+
+    .bismillah {
+      font-family: 'Amiri', serif; font-size: 28px; color: var(--text-dark);
+      margin-bottom: 15px; font-weight: 700; direction: rtl;
+    }
+    
+    .ayah {
+      font-family: 'Amiri', serif; font-size: 18px; color: var(--gold-dark);
+      line-height: 2; padding: 0 10px; direction: rtl;
+    }
+
+    .ayah-meaning {
+      font-family: 'Cormorant Garamond', serif; font-size: 13px; color: var(--text-muted);
+      margin-top: 15px; font-style: italic; display: block; line-height: 1.6;
+    }
+
+    .invite-text {
+      font-family: 'Montserrat', sans-serif; font-size: 10px; text-transform: uppercase;
+      letter-spacing: 3px; color: var(--text-dark); margin: 40px 0 20px; font-weight: 500;
+    }
+
+    /* Video-Style Cursive Names */
+    .name-wrapper { margin: 15px 0; }
+    .name {
+      font-family: 'Great Vibes', cursive; font-size: 65px; font-weight: 400;
+      color: var(--text-dark); line-height: 1;
+    }
+    
+    .parents {
+      font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--text-muted);
+      font-style: italic; margin-bottom: 15px;
+    }
+    
+    .weds {
+      font-family: 'Montserrat', sans-serif; font-size: 11px; color: var(--gold-dark);
+      letter-spacing: 5px; margin: 20px 0; display: flex; align-items: center; justify-content: center;
+    }
+    .weds::before, .weds::after {
+      content: ''; height: 1px; width: 30px; background: var(--gold-base); margin: 0 15px;
+    }
+
+    /* Details Section */
+    .event-details {
+      margin: 40px 0; padding: 25px 0; position: relative;
+    }
+    .event-details::before {
+      content: '❖'; position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+      color: var(--gold-base); font-size: 14px;
+    }
+    .date-main {
+      font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--text-dark);
+      font-weight: 600;
+    }
+    .date-sub {
+      font-family: 'Montserrat', sans-serif; font-size: 11px; color: var(--gold-dark);
+      margin-top: 8px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px;
+    }
+    .venue {
+      font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--text-dark);
+      margin-top: 15px; font-style: italic;
+    }
+
+    /* Elegant Countdown */
+    .countdown-title {
+      font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: 2px;
+      color: var(--text-muted); text-transform: uppercase; margin-bottom: 15px;
+    }
+    .countdown-container {
+      display: flex; justify-content: center; gap: 15px; margin-bottom: 40px;
+    }
+    .cd-box {
+      background: var(--bg-cream); color: var(--text-dark); padding: 12px 10px;
+      border-radius: 8px; min-width: 60px; border: 1px solid rgba(197, 160, 89, 0.3);
+    }
+    .cd-box span { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; }
+    .cd-box small { display: block; font-family: 'Montserrat', sans-serif; font-size: 8px; text-transform: uppercase; letter-spacing: 1px; color: var(--gold-dark); margin-top: 5px;}
+
+    /* Premium Scratch Card */
+    .scratch-wrapper {
+      position: relative; width: 100%; max-width: 320px; height: 120px; margin: 0 auto 30px;
+      border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--gold-base); box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    .dua-secret {
+      position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+      background: var(--bg-cream); display: flex; flex-direction: column;
+      justify-content: center; align-items: center; padding: 15px;
+    }
+    .dua-arabic { font-family: 'Amiri', serif; color: var(--text-dark); font-size: 20px; font-weight: 700; direction: rtl;}
+    .dua-english { font-family: 'Montserrat', sans-serif; font-size: 10px; color: var(--text-muted); margin-top: 8px; }
+    canvas#scratchCanvas { position: absolute; top: 0; left: 0; z-index: 2; cursor: pointer; touch-action: none; }
+
+    /* Action Buttons */
+    .actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--text-dark); color: var(--bg-cream); padding: 12px 25px;
+      border-radius: 30px; text-decoration: none; font-size: 10px;
+      font-family: 'Montserrat', sans-serif; font-weight: 500; letter-spacing: 2px;
+      transition: all 0.3s; border: 1px solid var(--text-dark);
+    }
+    .btn.outline { background: transparent; color: var(--text-dark); }
+    .btn:hover { background: var(--gold-base); color: #fff; border-color: var(--gold-base); transform: translateY(-3px); }
+
+    .fade-up { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  </style>
+</head>
+<body>
+
+  <canvas id="sparkles-canvas"></canvas>
+
+  <audio id="bgMusic" loop preload="auto">
+    <!-- Replace with your realistic audio link -->
+    <source src="wedding_nasheed.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="sound-control" onclick="toggleMute()">🔊</div>
+
+  <!-- 3D Realistic Curtains -->
+  <div id="gate-container">
+    <div id="left-door" class="door"></div>
+    <div id="right-door" class="door"></div>
+  </div>
+
+  <!-- Premium Embossed Seal -->
+  <div id="seal-btn" onclick="openGate()">
+    <div class="seal-circle">
+      <span class="seal-monogram">M&A</span>
+    </div>
+    <div class="seal-text">Tap to Reveal</div>
+  </div>
+
+  <!-- Main Scrolling Content -->
+  <div class="main-scroll-container" id="scroll-container">
+    <div class="content-wrapper" id="main-content">
+      <div class="islamic-card">
+        
+        <div id="guest-greeting-container" class="fade-up">
+          <span id="guest-greeting" class="guest-tag">Welcome</span>
+        </div>
+
+        <div class="bismillah fade-up">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+        
+        <div class="ayah fade-up">
+          وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
+          <span class="ayah-meaning">"And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy." (30:21)</span>
+        </div>
+
+        <div class="invite-text fade-up">Joyfully Invite You To Celebrate The Wedding Of</div>
+        
+        <div class="name-wrapper fade-up">
+          <div class="name">Madiha</div>
+        </div>
+        <div class="parents fade-up">D/o Mr. & Mrs. Abdul Basit Shaikh</div>
+        
+        <div class="weds fade-up">WEDS</div>
+        
+        <div class="name-wrapper fade-up">
+          <div class="name">Azaan</div>
+        </div>
+        <div class="parents fade-up">S/o Mr. & Mrs. Javed Shaikh</div>
+
+        <div class="event-details fade-up">
+          <div class="date-main">12th November, 2026</div>
+          <div class="date-sub">Thursday • Aqd: Asr (5:00 PM)</div>
+          <div class="venue">Hamidiya Function Hall</div>
+        </div>
+
+        <div class="fade-up">
+          <div class="countdown-title">Counting Down To Forever</div>
+          <div class="countdown-container">
+            <div class="cd-box"><span id="days">00</span><small>Days</small></div>
+            <div class="cd-box"><span id="hours">00</span><small>Hours</small></div>
+            <div class="cd-box"><span id="mins">00</span><small>Mins</small></div>
+            <div class="cd-box"><span id="secs">00</span><small>Secs</small></div>
+          </div>
+        </div>
+
+        <div class="scratch-wrapper fade-up">
+          <div class="dua-secret">
+            <div class="dua-arabic">بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا</div>
+            <div class="dua-english">May Allah bless you both.</div>
+          </div>
+          <canvas id="scratchCanvas"></canvas>
+        </div>
+
+        <div class="actions fade-up">
+          <a href="https://maps.app.goo.gl/FaJvCyufFj4SQwsj6?g_st=ac" target="_blank" class="btn">VIEW MAP</a>
+          <a href="#" id="rsvp-btn" target="_blank" class="btn outline">RSVP</a>
+          <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Madiha+%26+Azan+Wedding&dates=20261112T113000Z/20261112T163000Z&details=Join+us+for+the+wedding+ceremony+of+Madiha+and+Azan.&location=Hamidiya+Function+Hall" target="_blank" class="btn outline">ADD TO CALENDAR</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const MY_WHATSAPP_NUMBER = "919403410334"; 
+
+    // RSVP & Greeting
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestName = urlParams.get('to');
+    
+    if (guestName) {
+      const greetingEl = document.getElementById('guest-greeting');
+      greetingEl.textContent = `Specially Invited: ${guestName}`;
+      const rsvpText = encodeURIComponent(`Assalamu Alaikum. ${guestName} ki taraf se Mubarakbaad! InshaAllah hum zaroor shamil honge.`);
+      document.getElementById('rsvp-btn').href = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${rsvpText}`;
+    } else {
+      document.getElementById('guest-greeting-container').style.display = 'none';
+      document.getElementById('rsvp-btn').href = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=Assalamu+Alaikum.+Mubarakbaad!`;
+    }
+
+    // Sparkles
+    const pCanvas = document.getElementById('sparkles-canvas');
+    const pCtx = pCanvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() { pCanvas.width = window.innerWidth; pCanvas.height = window.innerHeight; }
+    window.addEventListener('resize', resizeCanvas); resizeCanvas();
+
+    for (let i = 0; i < 40; i++) {
+      particles.push({
+        x: Math.random() * pCanvas.width, y: Math.random() * pCanvas.height,
+        r: Math.random() * 2 + 0.5, d: Math.random() * 0.4 + 0.1,
+        alpha: Math.random() * 0.4 + 0.1
+      });
+    }
+
+    function drawSparkles() {
+      pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+      pCtx.fillStyle = '#C5A059';
+      particles.forEach(p => {
+        pCtx.globalAlpha = p.alpha; pCtx.beginPath();
+        pCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2); pCtx.fill();
+        p.y -= p.d;
+        if (p.y < 0) { p.y = pCanvas.height; p.x = Math.random() * pCanvas.width; }
+      });
+      requestAnimationFrame(drawSparkles);
+    }
+    drawSparkles();
+
+    // Audio
+    let isMuted = false;
+    const music = document.getElementById('bgMusic');
+    const soundBtn = document.getElementById('sound-control');
+
+    function playAudioFadeIn() {
+      if(!music) return;
+      music.volume = 0;
+      let playPromise = music.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          soundBtn.style.display = 'flex';
+          let vol = 0;
+          let fade = setInterval(() => {
+            if (vol < 0.4) { vol += 0.05; music.volume = vol; }
+            else { clearInterval(fade); }
+          }, 200);
+        }).catch(e => console.log("Audio waiting"));
+      }
+    }
+
+    function toggleMute() {
+      if(isMuted) { music.volume = 0.4; soundBtn.innerText = '🔊'; isMuted = false; }
+      else { music.volume = 0; soundBtn.innerText = '🔇'; isMuted = true; }
+    }
+
+    // Gate & Cinematic Reveal Logic
+    let isOpened = false;
+    function openGate() {
+      if(isOpened) return; isOpened = true;
+      playAudioFadeIn();
+
+      const scrollContainer = document.getElementById('scroll-container');
+      scrollContainer.style.display = 'block';
+      
+      const seal = document.getElementById('seal-btn');
+      seal.style.transform = 'translate(-50%, -50%) scale(1.5)';
+      seal.style.opacity = '0';
+      
+      document.getElementById('left-door').classList.add('open-left');
+      document.getElementById('right-door').classList.add('open-right');
+
+      setTimeout(() => {
+        seal.style.display = 'none';
+        document.getElementById('gate-container').style.display = 'none';
+        document.body.style.overflow = 'auto'; // Enable scrolling after animation
+        
+        const mainContent = document.getElementById('main-content');
+        mainContent.classList.add('revealed');
+
+        // Reveal elements softly on scroll
+        setupScrollAnimations();
+        setupScratchCard();
+        startCountdown();
+      }, 2500);
+    }
+
+    // Intersection Observer for smooth scrolling fade-ups
+    function setupScrollAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-up').forEach((el, index) => {
+        el.style.transitionDelay = `${index * 0.1}s`; // cascading effect
+        observer.observe(el);
+      });
+    }
+
+    // Countdown
+    function startCountdown() {
+      const weddingDate = new Date("2026-11-12T17:00:00+05:30").getTime();
+      const timer = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+        
+        if (distance > 0) {
+          document.getElementById("days").innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+          document.getElementById("hours").innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+          document.getElementById("mins").innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+          document.getElementById("secs").innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+        } else {
+          clearInterval(timer);
+          document.querySelector('.countdown-container').innerHTML = '<div class="cd-box" style="width:100%"><span>Alhamdulillah</span><small>Today is the day!</small></div>';
+        }
+      }, 1000);
+    }
+
+    // Premium Scratch Card
+    function setupScratchCard() {
+      const wrapper = document.querySelector('.scratch-wrapper');
+      const canvas = document.getElementById('scratchCanvas');
+      if (!canvas) return;
+      
+      const ctx = canvas.getContext('2d');
+      const rect = wrapper.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      canvas.style.width = `${rect.width}px`;
+      canvas.style.height = `${rect.height}px`;
+      ctx.scale(dpr, dpr);
+
+      // Gold textured overlay
+      let gradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
+      gradient.addColorStop(0, '#E5CD8C'); gradient.addColorStop(0.5, '#C5A059'); gradient.addColorStop(1, '#8C6D31');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, rect.width, rect.height);
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = '500 13px Montserrat';
+      ctx.textAlign = 'center';
+      ctx.fillText('✨ SCRATCH TO REVEAL ✨', rect.width/2, rect.height/2 + 4);
+
+      let isDragging = false;
+      let lastX = 0, lastY = 0;
+      let pixelsCleared = 0;
+      const totalPixels = rect.width * rect.height;
+
+      function getPos(e) {
+        const bounds = canvas.getBoundingClientRect();
+        const touch = e.touches ? e.touches[0] : e;
+        return { x: touch.clientX - bounds.left, y: touch.clientY - bounds.top };
+      }
+
+      function scratchStart(e) { 
+        isDragging = true; 
+        const pos = getPos(e); lastX = pos.x; lastY = pos.y; 
+      }
+      function scratchEnd() { isDragging = false; checkReveal(); }
+      
+      function scratch(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        const pos = getPos(e);
+        
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.lineJoin = "round"; ctx.lineCap = "round";
+        ctx.lineWidth = 35; // Thicker scratch for better UX
+        
+        ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(pos.x, pos.y); ctx.stroke();
+        
+        lastX = pos.x; lastY = pos.y;
+        pixelsCleared += 120;
+      }
+
+      function checkReveal() {
+        if (pixelsCleared > totalPixels * 0.45) {
+          canvas.style.transition = "opacity 0.8s";
+          canvas.style.opacity = "0";
+          setTimeout(() => canvas.style.display = "none", 800);
+        }
+      }
+
+      canvas.addEventListener('mousedown', scratchStart); canvas.addEventListener('touchstart', scratchStart, {passive: false});
+      window.addEventListener('mouseup', scratchEnd); window.addEventListener('touchend', scratchEnd);
+      canvas.addEventListener('mousemove', scratch); canvas.addEventListener('touchmove', scratch, {passive: false});
+    }
+  </script>
+</body>
+</html>
+
